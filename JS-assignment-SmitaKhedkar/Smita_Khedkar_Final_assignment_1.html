@@ -1,0 +1,33 @@
+<html>
+
+<head></head>
+<body>
+
+<div id="parentDiv">
+
+<h3>Final Assignment 1</h3>
+
+</div>
+
+</body>
+<script>
+//Assignment 1 :
+//Palindrome function :
+	var str = "i ama i";
+	function isPalidrome(str){
+		var a = new Array();
+		a = str.split(""); //["i", " ", "a", "m", "a", " ", "i"]
+		len = a.length; //7
+		var ptr = "";
+		for(var p =0; p< len ; p++){
+		
+		ptr = ptr+a.pop();
+		}
+		console.log(ptr); //i ama i
+		if(ptr === str){console.log(true);} else{console.log(false);} 
+	}
+	
+	isPalidrome(str);
+</script>
+
+</html>

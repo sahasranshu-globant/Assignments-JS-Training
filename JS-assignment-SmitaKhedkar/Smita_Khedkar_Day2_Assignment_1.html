@@ -1,0 +1,26 @@
+<html>
+
+<head></head>
+<body>
+
+<div id="parentDiv">
+
+<h3>Day 2 Assignment 1</h3>
+
+</div>
+
+</body>
+<script>
+function complexOperations(a) {
+            var result;
+            return function(b) {
+                result = a * b;
+                return function(c) {
+                    console.log(result - c);
+                }
+            }
+        };
+        complexOperations(5)(10)(2);
+</script>
+
+</html>

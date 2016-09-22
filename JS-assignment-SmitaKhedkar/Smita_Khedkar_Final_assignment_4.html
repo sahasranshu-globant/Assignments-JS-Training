@@ -1,0 +1,17 @@
+<html>
+
+<body>
+<div>
+<div><label><h3>Final Assignment 4</h3> </label></div>
+
+</body>
+<script>
+function newMethod(ctor){
+var ctorArgs = Array.prototype.slice.call(arguments, 1);
+var context = Object.create(ctor.prototype);
+ctor.apply(context, ctorArgs);
+return context;
+}
+</script>
+</html>
+
