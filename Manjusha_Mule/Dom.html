@@ -3,29 +3,25 @@
 <body>
 
 	<div id="div1">
-	<button id="p1" onclick="addbtn()">Click Here</button>
+	<button id="btn">Click Here</button>
 	</div>
 
 <script>
-	function addbtn(){
+	document.getElementById('btn').addEventListener("click", function(event) {
 
 		var parent = document.getElementById("div1");
-		var child = document.getElementById("p1");
+		var child = document.getElementById("btn");
 		parent.removeChild(child);
 
-		var parent = document.getElementById("div1");
-		var para = document.createElement("button");
-		var node = document.createTextNode("This is button 1");
-		para.appendChild(node);
+		for(var i =0 ; i <2 ; i++){
+			var parent = document.getElementById("div1");
+			var para = document.createElement("button");
+			var node = document.createTextNode("This is button");
+			para.appendChild(node);
 
-		parent.appendChild(para);
-		
-		var para = document.createElement("button");
-		var node = document.createTextNode("This is button 2");
-		para.appendChild(node);
-
-		parent.appendChild(para);
-	}
+			parent.appendChild(para);
+		}
+	});
 </script>
 
 </body>
