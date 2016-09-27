@@ -1,0 +1,52 @@
+<html>
+<body>
+    <h1>Second Assignment - Car</h1>
+<script>
+function Car (color,model,engine,topSpeed) {
+   this.color = color;
+   this.model = model;
+   this.engine = engine;
+   this.topSpeed = topSpeed;
+}
+var jazz = new Car("blue","Jazz",1248,160);
+var hyundai = new Car("red","hyundai",1366,170);
+var baleno = new Car("orange",'Baleno',1496,180);
+
+function getCarDetails(carProp) {
+   var selectedCarsArray = [jazz,hyundai,baleno];
+   var selectedCar = [];
+    selectedCarsArray.forEach(function(carModel){
+     for(var props in carModel) {
+           if(carModel[props] == carProp) {
+                selectedCar = carModel
+           }
+       }
+   });
+   if(selectedCar.length > 1) {
+     return selectedCar;
+    } else {
+        alert("prop is not present");
+    }
+}   
+//var c = getCarDetails("blue");
+//var d = getCarDetails("red");
+//console.log(c);
+//console.log(d);
+
+// scenario functions 
+function customModel(Obj,Prop) {
+   var carSpecification = getCarDetails(Prop);
+  // console.log("carSpecification:",carSpecification);
+    Obj.color = carSpecification.color;
+    return Obj; 
+}
+try{
+    var res = customModel(baleno,"white");
+} catch(err) {
+    console.log("plz enter valid input : ",err);
+}
+
+  </script>
+
+</body>
+</html>

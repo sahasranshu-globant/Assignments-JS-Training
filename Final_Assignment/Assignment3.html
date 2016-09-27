@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+
+<body>
+<h1>Final Assignment - Button destory</h1>
+<div id="wrapper">
+  <button onclick="destroyButton(this)">Click me</button>
+</div>
+<script>
+var mainWrapper = document.getElementById("wrapper");
+
+function destroyButton(el) {
+  var newButton = el.cloneNode(true);
+  mainWrapper.removeChild(el);
+  newButton.innerHTML = "Button";
+  mainWrapper.appendChild(newButton);
+  
+  var newButton2 = el.cloneNode(true);
+  newButton2.innerHTML = "Button"
+  mainWrapper.appendChild(newButton2)
+}
+</script>
+</body>
+</html>
