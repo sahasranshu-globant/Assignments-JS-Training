@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign 4</title>
+</head>
+<body>
+    <h1>Assign 4</h1>
+    <script>
+    function Car (color,model,engine,topSpeed) {
+        this.color = color;
+        this.model = model;
+        this.engine = engine;
+        this.topSpeed = topSpeed;
+    }    
+    function newkeyword(Func,argsArray) {
+        var newObj = {};
+        Object.setPrototypeOf(newObj,Func.prototype); 
+        Func.apply(newObj,argsArray);
+        return newObj;
+    }
+    var car = newkeyword(Car,["blue","hyundai",1280,180]);
+    console.log("car : ",car);
+    
+    </script>
+</body>
+</html>

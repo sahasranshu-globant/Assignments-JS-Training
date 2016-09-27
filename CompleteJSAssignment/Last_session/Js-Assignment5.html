@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 50%;
+		}
+		th{
+			color: white;
+			background-color: black;
+		}
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		</style>
+	</head>	
+<body onload="familyMembers()">
+<div id ="myDiv">
+<form id ="formToSubmit" method="post" action=""> 
+	Name       : <input type="text" name="name"> <br><br>
+	Relation   : <input type="text" name="relation"> <br><br>
+	Age        : <input type="text" name="age"> <br><br>
+	Activities : <input type="text" name="activities"> <br><br>
+	<button type="button" id="submitBtn" onclick="submitBtnfunc()"> Add person </button>
+</form>
+</div>
+<p id="demo"></p>
+<table id="myTable" border="1">
+	<caption>Familty Data</caption>
+	<thead>
+	<tr>
+	<th>Activities</th>
+	<th>Age</th>
+	<th>Relation</th>
+	<th>Name</th>
+	<tr/>
+	</thead>
+</table>
+
+<script>
+
+var familymems=0;
+var formVals = document.getElementById("formToSubmit");
+var membersToShow = {};
+var myTable = document.getElementById("myTable");
+var Person = function(name,relation,age,activities){
+	this.name = name;
+	this.relation = relation;
+	this.age = age;
+	this.activities = activities;
+}
+
+function familyMembers(){
+	var flag = 0;
+	formVals.style.display = "none";
+	if(flag == 0){
+		familymems = prompt("Please enter the total family members : ");
+		formVals.style.display = "block";
+		flag++;
+	}
+}
+
+var submitBtnfunc = function(){
+		var memCount = MyCounter()-1;
+		if( memCount < familymems){
+			var name       = formVals.elements.namedItem("name").value;
+			var relation   = formVals.elements.namedItem("relation").value;
+			var age        = formVals.elements.namedItem("age").value;
+			var activities = formVals.elements.namedItem("activities").value;
+			
+			membersToShow[memCount] = new Person(name,relation,age,activities);
+			alert(" Family member " + name + " added.");
+			if(memCount+1 == familymems){
+				formVals.style.display = "none";
+				displayMembers();
+			}
+		}else {
+			alert("Oops ..! Adding extra person not from family.");
+		}
+		// clearing form values 
+		formVals.elements.namedItem("name").value = "";
+		formVals.elements.namedItem("relation").value = "";
+		formVals.elements.namedItem("age").value = "";
+		formVals.elements.namedItem("activities").value = "";
+};
+
+var MyCounter =( function(){
+	var counter=0 ;
+	return function(){
+		counter+=1;
+		return counter;
+	}
+})();
+
+var displayMembers = function(){
+	for(var key in membersToShow){
+		if(membersToShow.hasOwnProperty(key)){
+			var obj = membersToShow[key];
+			
+			var row = myTable.insertRow();
+			for(var prop in obj){
+				var tableCount = 0;
+				if(obj.hasOwnProperty(prop)){
+					var cell1 = row.insertCell(tableCount);
+					cell1.innerHTML = obj[prop];
+					console.log(obj[prop]);
+					tableCount++;
+				}
+			}
+		}
+	}
+}
+
+</script>
+</body>
+</html>
