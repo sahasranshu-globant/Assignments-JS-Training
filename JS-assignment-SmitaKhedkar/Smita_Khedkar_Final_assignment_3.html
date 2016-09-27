@@ -1,0 +1,37 @@
+<html>
+
+<head></head>
+<body>
+
+<div id="parentDiv">
+
+<button id="btn1" onclick="deleteNRecreate();">Submit</button>
+
+</div>
+
+</body>
+<script>
+function deleteNRecreate(){
+	var a = document.getElementById("parentDiv");
+	var b = document.getElementById("btn1");
+	console.log(a);
+	console.log(b.innerHTML);
+	a.removeChild(b);
+	 a.appendChild(button1);
+	 a.appendChild(button2);
+}
+var button1 = document.createElement('button');
+  button1.innerHTML = 'Button 1';
+  button1.onclick = function(){
+    alert('Child 1');
+  };
+  
+var button2 = document.createElement('button');
+  button2.innerHTML = 'Button 2';
+  button2.onclick = function(){
+    alert('Child 2');
+  };
+ 
+</script>
+
+</html>
