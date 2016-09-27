@@ -25,25 +25,18 @@ function getCarDetails(carProp) {
    if(selectedCar.length > 1) {
      return selectedCar;
     } else {
-        alert("prop is not present");
+        alert("property is not present");
     }
-}   
-//var c = getCarDetails("blue");
-//var d = getCarDetails("red");
-//console.log(c);
-//console.log(d);
-
-// scenario functions 
+} 
 function customModel(Obj,Prop) {
    var carSpecification = getCarDetails(Prop);
-  // console.log("carSpecification:",carSpecification);
     Obj.color = carSpecification.color;
     return Obj; 
 }
 try{
     var res = customModel(baleno,"white");
 } catch(err) {
-    console.log("plz enter valid input : ",err);
+    console.log("Enter valid : ",err);
 }
 
   </script>
