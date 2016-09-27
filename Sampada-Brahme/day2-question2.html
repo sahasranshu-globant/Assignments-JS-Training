@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Day2 assignment- Question 1</title>
+</head>
+<body>
+<script type="text/javascript">
+function car_spec(color, model, speed, power) {
+  // public proeprties
+  this.color = color;
+  this.model = model;
+  this.speed = speed;
+  // private function
+  var eng_power = power;
+  var powerValue = function() {
+    return eng_power;
+  }
+  
+  //privileged function
+  this.privilegedFun = powerValue();
+  
+  
+  // Prototype
+  car_spec.prototype.public_get_spec = function() {
+    return this.color;
+    return this.model;
+    return this.speed;
+    return this.privilegedFun();
+  }();
+}
+var maruti = new car_spec("blue", "baleno", 160, 1248);
+var hyundai = new car_spec("red", "elitei", 170, 1366);
+var honda = new car_spec("orange", "jazz", 180, 1496);
+
+alert(maruti.privilegedFun + " " + hyundai.color);
+
+</script>
+</body>
+</html>
