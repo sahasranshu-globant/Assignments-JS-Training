@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        function Car(color, brand, enginePower, topSpeed) {
+            this.color = color;
+            this.brand = brand;
+            this.enginePower = enginePower;
+            this.topSpeed = topSpeed;
+        }
+        var baleno = new Car("blue", "Maruti", 1248, 160);
+        var i20 = new Car("red", "Hundai", 1366, 170);
+        var jazz = new Car("orange", "Honda", 1496, 180);
+
+        function getCarDetails(carProperty) {
+            var cars = [baleno, i20, jazz];
+            var modifyCar;
+            cars.forEach(function(car) {
+                for (var props in car) {
+                    console.log(car[props]);
+                    if (car[props] == carProperty) {
+                        modifyCar = car;
+                        console.log(modifyCar);
+                    }
+                }
+            });
+            if (modifyCar) {
+                return modifyCar;
+            } else {
+                alert("property does not exists");
+            }
+        }
+
+        function makeCustomModel(carObj, Prop) {
+            var car = getCarDetails(Prop);
+            // console.log(car);
+            carObj.color = car.color;
+            return carObj;
+        }
+        var modifiedCar = makeCustomModel(jazz, "red");
+        console.log("Modified Car", modifiedCar);
+    </script>
+</head>
+
+<body> </body>
+
+</html>

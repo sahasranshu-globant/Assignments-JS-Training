@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            border: 1px solid #ccc;
+        }
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            min-height: 300px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+        input[type="text"],
+        select {
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            font-size: 14px;
+        }
+        label {
+            width: 210px;
+            float: left;
+        }
+        .error {
+            color: #f10;
+        }
+    </style>
+    <script type="text/javascript">
+        var myApp = myApp || {};
+        myApp.users = [];
+        var no_of_ppl = 0;
+
+        function readAndRenderForm() {
+            no_of_ppl = document.getElementById("noOfPerson").value
+            console.log(no_of_ppl);
+            if (isNaN(no_of_ppl) || no_of_ppl < 1) {
+                text = "Please enter valid number";
+                document.getElementById("number").innerHTML = text;
+            } else {
+                renderForm();
+            }
+        }
+
+        function renderForm() {
+            if (no_of_ppl <= 0) {
+                document.getElementById("createForm").style.display = "none";
+                document.getElementById("showBtn").style.display = "block";
+            } else {
+                document.getElementById("createForm").style.display = "block";
+                document.getElementById("firstName").value = "";
+                document.getElementById("relation").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("activity").value = "";
+            }
+        }
+
+        function storeData() {
+            var list = {};
+            list.fname = document.getElementById("firstName").value;
+            list.relation = document.getElementById("relation").value;
+            list.age = document.getElementById("age").value;
+            list.activity = document.getElementById("activity").value;
+            //console.log(list);
+            if (list.relation == "grandfather") {
+                myApp.GrandFather = {
+                    firstName: list.fname,
+                    relation: list.relation,
+                    age: list.age,
+                    activity: list.activity
+                }
+                console.log("GrandFather : ", myApp.GrandFather);
+            } else if (list.relation == "father") {
+                myApp.Father = Object.create(myApp.GrandFather);
+                myApp.Father.firstName = list.fname;
+                myApp.Father.relation = list.relation;
+                myApp.Father.age = list.age;
+                myApp.Father.activity = list.activity;
+                myApp.fatherProto = Object.getPrototypeOf(myApp.Father);
+                console.log("Father : ", myApp.Father);
+            } else if (list.relation == "self") {
+                myApp.Self = Object.create(myApp.Father);
+                myApp.Self.firstName = list.fname;
+                myApp.Self.relation = list.relation;
+                myApp.Self.age = list.age;
+                myApp.Self.activity = list.activity;
+                myApp.selfProto = Object.getPrototypeOf(myApp.Self);
+                myApp.FatherProto = Object.getPrototypeOf(myApp.Father);
+                console.log("Self : ", myApp.Self);
+            }
+            no_of_ppl = no_of_ppl - 1;
+            renderForm();
+        }
+
+        function showData() {
+            document.write("<table style='border: 1px solid #ccc; border-collapse: collapse'>");
+            document.write("<tr><td style='border: 1px solid #ccc; padding: 8px ;font-weight: bold'>Name</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Self.firstName + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Father.firstName + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.GrandFather.firstName + "</td></tr>");
+            document.write("<tr><td style='border: 1px solid #ccc; padding: 8px;font-weight: bold'>Relation</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Self.relation + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Father.relation + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.GrandFather.relation + "</td></tr>");
+            document.write("<tr><td style='border: 1px solid #ccc; padding: 8px;font-weight: bold'>Age</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Self.age + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Father.age + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.GrandFather.age + "</td></tr>");
+            document.write("<tr><td style='border: 1px solid #ccc; padding: 8px;font-weight: bold'>Activities</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Self.activity + "," + myApp.selfProto.activity + "," + myApp.FatherProto.activity + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.Father.activity + "," + myApp.fatherProto.activity + "</td><td style='border: 1px solid #ccc; padding: 8px'>" + myApp.GrandFather.activity + "</td></tr>");
+            document.write("</table>");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <form> </form>
+            <label for="noOfPerson"> Enter the number of person</label>
+            <input type="text" id="noOfPerson" name="no_of_person" />
+            <input type="submit" onclick="showData();" value="Show Data" style="display: none" id="showBtn" class="btn" />
+            <input type="submit" onclick="readAndRenderForm();" value="GO" class="btn" />
+            <p id="number" class="error"></p>
+        </div>
+        <div id="createForm" style="display: none;">
+            <div name="create_form">
+                <p>
+                    <label for="firstName">First Name </label>
+                    <input type="text" id="firstName" /> </p>
+                <p>
+                    <label for="activity">Relation </label>
+                    <select id="relation">
+                        <option value="">Select</option>
+                        <option value="self">Self</option>
+                        <option value="father">Father</option>
+                        <option value="grandfather">Grandfather</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="age">Age </label>
+                    <input type="text" id="age" /> </p>
+                <p>
+                    <label for="activity">Activity </label>
+                    <input type="text" id="activity" /> </p>
+                <input type="submit" onclick="storeData();" value="store" class="btn" /> </div>
+        </div>
+    </div>
+</body>
+
+</html>

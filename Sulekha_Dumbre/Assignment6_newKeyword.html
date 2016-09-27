@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        function Person(fname, age) {
+            this.firstName = fname;
+            this.age = age;
+        }
+
+        function newMethod(constructorName, arguments) {
+            var obj = {};
+            constructorName.apply(obj, arguments);
+            obj.__proto__ = constructorName.prototype;
+            return obj;
+        }
+        var person = newMethod(Person, ["sulekha", 16]);
+        console.log(person);
+        var person1 = new Person("Ishaan", 3);
+        console.log(person1);
+    </script>
+</head>
+
+<body>
+    <div> </div>
+</body>
+
+</html>

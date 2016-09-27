@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script type="text/javascript">
+        function complexOperations(num1) {
+            var multiplication;
+            return function(num2) {
+                multiplication = num1 * num2;
+                return function(num3) {
+                    var total = multiplication - num3;
+                    console.log("Total", total);
+                    return total;
+                }
+            }
+        }
+        complexOperations(10)(5)(2);
+    </script>
+
+    
+</body>
+
+</html>

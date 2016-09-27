@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            min-height: 300px;
+        }
+        .btn,
+        button {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            margin-right: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+        function destroy(el) {
+            var parent_node = el.parentElement;
+            el.style.display = "none";
+            
+            var node1 = document.createElement("button");
+            var textnode1 = document.createTextNode("Button 1");
+            node1.appendChild(textnode1);
+
+            var node2 = document.createElement("button");
+            var textnode2 = document.createTextNode("Button 2");
+            node2.appendChild(textnode2);
+            console.log(node1);
+            console.log(node2);
+
+            parent_node.appendChild(node1);
+            parent_node.appendChild(node2);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <p>Create a button that is destroyed by clicking on it but two new buttons are created in it's place.</p>
+        <div id="btnWrapper">
+            <button onclick="destroy(this)" id="hitMeBtn" class="btn">Hit Me </button>
+        </div>
+    </div>
+</body>
+
+</html>
