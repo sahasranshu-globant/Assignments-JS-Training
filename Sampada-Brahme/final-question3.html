@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fianl assignment- Question 3</title>
+</head>
+<body>
+<input type="button" value="click me" id="removeBtn" />
+<script type="text/javascript">
+function removeBtn() {
+   var btn = document.getElementById('removeBtn');
+   btn.onclick = function() {
+    btn.remove();
+      function createBtn(labelVal){
+        var i;
+        for (i = 0; i<2; i++){
+          var buttonnode= document.createElement('input');
+          buttonnode.setAttribute('type','button');
+          buttonnode.setAttribute('value',i);
+          document.body.appendChild(buttonnode);
+          document.body.appendChild(document.createElement("br"));
+        }
+    }
+    createBtn()
+  }
+}
+removeBtn();
+
+</script>
+</body>
+</html>
