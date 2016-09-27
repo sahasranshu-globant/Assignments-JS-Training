@@ -15,7 +15,7 @@
     }    
     function newkeyword(Func,argsArray) {
         var newObj = {};
-        newObj.constructor = Func;
+        Object.setPrototypeOf(newObj,Func.prototype); 
         Func.apply(newObj,argsArray);
         return newObj;
     }
