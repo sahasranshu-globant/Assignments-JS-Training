@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width = device-width, minimal-ui, initial-scale = 1, user-scalable = no" />
+    <title>Final Assignment</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="familyDetailsForm.js"></script>
+</head>
+
+<body onload="init();">
+    <form id="family-details">
+        <div id="family-members-count-wrapper">
+            <label>Number of Family Members data you wants to enter: </label>
+            <input type="number" min="1" max="10" id="family-members-count" />
+            <button id="proceed-button">Proceed</button>
+        </div>
+        <div id="family-members-form" class="hide">
+            <label>Name: </label>
+            <input type="text" value="" id="name-input" />
+            <label>Relation: </label>
+            <input type="text" value="" id="relation-input" />
+            <label>Age: </label>
+            <input type="number" value="" id="age-input" min="1"/>
+            <label>Activities: </label>
+            <input type="text" value="" id="activity-input" />
+            <button id="next-button">Next</button>
+        </div>
+    </form>
+</body>
+
+</html>
