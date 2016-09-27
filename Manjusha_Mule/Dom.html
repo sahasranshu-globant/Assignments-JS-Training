@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<div id="div1">
+	<button id="btn">Click Here</button>
+	</div>
+
+<script>
+	document.getElementById('btn').addEventListener("click", function(event) {
+
+		var parent = document.getElementById("div1");
+		var child = document.getElementById("btn");
+		parent.removeChild(child);
+
+		for(var i =0 ; i <2 ; i++){
+			var parent = document.getElementById("div1");
+			var para = document.createElement("button");
+			var node = document.createTextNode("This is button");
+			para.appendChild(node);
+
+			parent.appendChild(para);
+		}
+	});
+</script>
+
+</body>
+</html>
