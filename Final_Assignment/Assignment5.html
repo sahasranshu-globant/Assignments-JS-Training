@@ -1,0 +1,96 @@
+<html>
+	<head>
+	</head>	
+<body onload="familyMembers()">
+<form id ="formToSubmit" method="post" action=""> 
+	Name       : <input type="text" name="name"> <br><br>
+	Relation   : <input type="text" name="relation"> <br><br>
+	Age        : <input type="text" name="age"> <br><br>
+	Activities : <input type="text" name="activities"> <br><br>
+	<button type="button" id="submitBtn" onclick="addDetails()"> Add person </button>
+</form>
+<p id="demo"></p>
+<table id="displayTable" border="1">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Relation</th>
+			<th>Age</th>
+			<th>Activities</th>
+		<tr/>
+	</thead>
+</table>
+
+<script>
+var fMembers=0;
+var inputValues = document.getElementById("formToSubmit");
+var displayMembers = {};
+var displayTable = document.getElementById("displayTable");
+var familyMember = function(name,relation,age,activities){
+	this.name = name;
+	this.relation = relation;
+	this.age = age;
+	this.activities = activities;
+}
+
+function familyMembers(){
+	var flag = 0;
+	inputValues.style.display = "none";
+	if(flag == 0){
+		fMembers = prompt("Please enter the total family members : ");
+		inputValues.style.display = "block";
+		flag++;
+	}
+}
+
+var addDetails = function(){
+	var MemberCount = MemberCounter()-1;
+	if( MemberCount < fMembers){
+		var name       = inputValues.elements.namedItem("name").value;
+		var relation   = inputValues.elements.namedItem("relation").value;
+		var age        = inputValues.elements.namedItem("age").value;
+		var activities = inputValues.elements.namedItem("activities").value;
+		
+		displayMembers[MemberCount] = new familyMember(name,relation,age,activities);
+		if(MemberCount+1 == fMembers){
+			inputValues.style.display = "none";
+			displayMembers();
+		}
+	}else {
+		alert("alert");
+	}
+	inputValues.elements.namedItem("name").value = "";
+	inputValues.elements.namedItem("relation").value = "";
+	inputValues.elements.namedItem("age").value = "";
+	inputValues.elements.namedItem("activities").value = "";
+};
+
+var MemberCounter =( function(){
+	var counter=0 ;
+	return function(){
+		counter+=1;
+		return counter;
+	}
+})();
+
+var displayMembers = function(){
+	for(var key in displayMembers){
+		if(displayMembers.hasOwnProperty(key)){
+			var obj = displayMembers[key];
+			var row = displayTable.insertRow();
+			for(var prop in obj){
+				var cellC = 0;
+				if(obj.hasOwnProperty(prop)){
+					var cell1 = row.insertCell(cellC);
+					cell1.innerHTML = obj[prop];
+					console.log(obj[prop]);
+					cellC++;
+				}
+			}
+		}
+	}
+}
+
+</script>
+</body>
+</html>
