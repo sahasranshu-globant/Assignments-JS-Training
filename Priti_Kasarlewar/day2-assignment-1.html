@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<title>Loop in JS</title>
+<head>
+<script type="text/javascript">
+	function addNumber(a, b, c){
+		var returnValue = "Result is : ";
+		function add(){
+			return returnValue + (a*b-c);
+		}
+		return add();
+	}
+	var result = addNumber(5, 10, 2);
+	alert(result);
+</script>
+</head>
+<body>
+</body>
+</html>

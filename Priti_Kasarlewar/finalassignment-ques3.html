@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<button class="eraseable">
+Delete me</button>
+<script type="text/javascript">
+var eraseable =  document.getElementsByClassName("eraseable");
+for (var i = 0; i < eraseable.length; i++) {
+    eraseable[i].addEventListener('click', delFunction, false); 
+}
+function delFunction(){  
+        this.remove(); //remove the clicked element if confirmed
+        var i;
+        for (i = 0; i<2; i++){
+          var buttonnode= document.createElement('input');
+          buttonnode.setAttribute('type','button');
+          buttonnode.setAttribute('value',i);
+          document.body.appendChild(buttonnode);
+ };
+};
+</script>
+</body>
+</html>
+
+
+
