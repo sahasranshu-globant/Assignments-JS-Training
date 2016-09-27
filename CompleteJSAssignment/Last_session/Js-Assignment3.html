@@ -1,0 +1,32 @@
+<html>
+<head>
+  <style>
+    button{margin:5px;}
+    </style>
+
+
+</head>
+
+<body>
+<h1>Button destory Program </h1>
+<div class="container" id="container">
+  <button onclick="destroyMe(this)">Destroy me </button>
+</div>
+<script>
+var btnContainer = document.getElementById("container");  
+function destroyMe(ele) {
+  console.log(ele);
+  var copyBtnEle = ele.cloneNode(true);
+  console.log("copyBtnEle : ",copyBtnEle);
+  btnContainer.removeChild(ele);
+  //debugger;
+  copyBtnEle.innerHTML = "New button 1";
+  btnContainer.appendChild(copyBtnEle);
+  console.log("btnContainer ",btnContainer);
+  var copyAnotherBtnEle = ele.cloneNode(true);
+  copyAnotherBtnEle.innerHTML = "New Button 2"
+  btnContainer.appendChild(copyAnotherBtnEle)
+}
+</script>
+</body>
+</html>
